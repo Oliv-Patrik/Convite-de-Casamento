@@ -45,7 +45,7 @@ body {
     /* Posiciona: Uma no topo centro, outra na base centro */
     background-position: center top, center bottom;
     /* Tamanho: Tenta cobrir a largura e +/- 60% da altura cada uma para se sobreporem levemente no meio */
-    background-size: 100% 60%, 100% 60%;
+    background-size: 100% 50%, 100% 50%;
 }
 
 /* --- NOVO: Película Branca para Leitura --- */
