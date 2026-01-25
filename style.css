@@ -55,7 +55,7 @@ body {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
     /* Ajuste o 0.85 para mais (mais branco) ou menos (mais foto) */
-    background: rgba(255, 255, 255, 0.60); 
+    background: rgba(255, 255, 255, 0.65); 
     z-index: 1; /* Fica acima das fotos de fundo */
 }
 
