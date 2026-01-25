@@ -25,23 +25,46 @@ body {
     padding: 20px 0;
 }
 
+/* --- ATUALIZAR: O "Papel" do Convite agora tem fotos --- */
 .convite-paper {
-    background-color: #ffffff;
+    /* Removemos a cor sólida background-color: #ffffff; */
     width: 100%;
     max-width: 615px;
-    position: relative;
+    /* Position relative é essencial para a película branca funcionar */
+    position: relative; 
     padding: 60px 40px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     text-align: center;
-    overflow: hidden; /* Mantive 'visible' para as folhas saírem da borda se quiser */
+    /* Voltei para hidden para garantir que as fotos de fundo não vazem se forem muito grandes */
+    overflow: hidden; 
+
+    /* --- NOVOS FUNDOS --- */
+    /* Carrega as duas imagens */
+    background-image: url('Image/Primeira.PNG'), url('Image/Segunda.JPG');
+    background-repeat: no-repeat, no-repeat;
+    /* Posiciona: Uma no topo centro, outra na base centro */
+    background-position: center top, center bottom;
+    /* Tamanho: Tenta cobrir a largura e +/- 60% da altura cada uma para se sobreporem levemente no meio */
+    background-size: 100% 60%, 100% 60%;
+}
+
+/* --- NOVO: Película Branca para Leitura --- */
+/* Cria uma camada branca semitransparente sobre as fotos */
+.convite-paper::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Ajuste o 0.85 para mais (mais branco) ou menos (mais foto) */
+    background: rgba(255, 255, 255, 0.60); 
+    z-index: 1; /* Fica acima das fotos de fundo */
 }
 
 /* --- DECORAÇÃO (FOLHAS) --- */
 .leaf {
     position: absolute;
     width: 310px; 
-    z-index: 10; 
-    pointer-events: none;
+    z-index: 3; /* Folhas ficam acima de tudo */
+    pointer-events: none
 }
 
 .leaf-top {
@@ -55,10 +78,10 @@ body {
     right: -120px;
 }
 
-/* --- CONTEÚDO --- */
+/* --- ATUALIZAR: Conteúdo e Folhas acima da película --- */
 .content {
     position: relative;
-    z-index: 10; 
+    z-index: 2; /* Garante que o texto fique acima da película branca */
 }
 
 /* --- MONOGRAMA --- */
@@ -120,46 +143,14 @@ body {
     font-size: 1.1rem;
 }
 
-/* --- NOVA SEÇÃO: FUNDO FOTO DOS NOIVOS --- */
-.destaque-casal {
-    position: relative;
-    /* Imagem de fundo */
-    background-image: url('Image/Valdinei-e-Gabriela.jpg');
-    background-size: cover;
-    background-position: top-center;
-    
-    /* Espaçamento interno */
-    padding: 100px 20px 60px 20px;
-    
-    /* Margens verticais para separar dos pais e locais */
-    margin: 30px 0;
-    
-    border-radius: 8px; /* Cantos levemente arredondados */
-    overflow: hidden; /* Garante que a foto respeite as bordas */
-}
-
-/* Camada branca por cima da foto (Overlay) */
-.destaque-casal::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background-color: rgba(255, 255, 255, 0.75); /* 75% branco - Ajuste esse número se quiser ver mais a foto */
-    z-index: 1;
-}
-
-/* Garante que o texto fique ACIMA da camada branca */
-.destaque-casal > * {
-    position: relative;
-    z-index: 2;
-}
-
-/* Nomes dos Noivos */
+/* Nomes dos Noivos (Ajuste de margem agora que estão soltos) */
 .couple-names {
     font-family: var(--font-script);
-    font-size: 5rem; /* Edwardian costuma ser pequena, aumentei bem */
+    font-size: 5rem; 
     color: var(--text-black);
     line-height: 1;
-    margin-bottom: 30px;
+    /* Aumentei a margem superior para separar dos pais */
+    margin: 50px 0 30px 0; 
     font-weight: 400;
 }
 

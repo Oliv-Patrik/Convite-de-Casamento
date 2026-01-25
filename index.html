@@ -43,17 +43,16 @@
                 </div>
             </div>
 
-            <div class="destaque-casal">
-                <h1 class="couple-names">Valdinei <span class="amp">&</span> Gabriela</h1>
+            <h1 class="couple-names">Valdinei <span class="amp">&</span> Gabriela</h1>
 
-                <p class="invite-text">CONVIDAM VOCÊ PARA O NOSSO CASAMENTO:</p>
+            <p class="invite-text">CONVIDAM VOCÊ PARA O NOSSO CASAMENTO:</p>
 
-                <div class="date-box">
-                    <span class="date">06 . JUNHO . 2026</span>
-                    <span class="separator">|</span>
-                    <span class="time">ÀS 16:30</span>
-                </div>
+            <div class="date-box">
+                <span class="date">06 . JUNHO . 2026</span>
+                <span class="separator">|</span>
+                <span class="time">ÀS 16:30</span>
             </div>
+            
             <div class="location-section">
                 <div class="loc-item">
                     <h4>CERIMÔNIA: PARÓQUIA SÃO PEDRO</h4>
@@ -75,21 +74,13 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var audio = document.getElementById("bg-music");
-            
-            // Tenta dar play automaticamente
             var playPromise = audio.play();
-
             if (playPromise !== undefined) {
-                playPromise.then(_ => {
-                    // Autoplay funcionou!
-                })
-                .catch(error => {
-                    // Autoplay foi bloqueado pelo navegador.
-                    // Adicionamos um evento para tocar no primeiro clique em qualquer lugar da tela.
-                    console.log("Autoplay bloqueado. Aguardando interação do usuário.");
+                playPromise.then(_ => {}).catch(error => {
+                    console.log("Autoplay bloqueado. Aguardando interação.");
                     document.body.addEventListener('click', function() {
                         audio.play();
-                    }, { once: true }); // {once: true} garante que o evento rode apenas uma vez
+                    }, { once: true });
                 });
             }
         });
